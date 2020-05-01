@@ -1,0 +1,9 @@
+<?= Form::select(
+    'user.regions_id',
+    Regions::allByCountry($countryId),
+    'class="js-remote" data-url="getCities/" data-update="div_cities"',
+    null,
+    '- Select -',
+    'id',
+    'name'
+); ?>

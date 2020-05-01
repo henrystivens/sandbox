@@ -1,0 +1,9 @@
+<?= Form::select(
+    'user.cities_id',
+    Cities::allByRegion($regionId),
+    '',
+    null,
+    '- Select -',
+    'id',
+    'name'
+); ?>
