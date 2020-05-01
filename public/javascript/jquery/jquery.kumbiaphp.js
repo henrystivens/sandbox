@@ -108,15 +108,8 @@
 		 * @param Object event
 		 */
 		cUpdaterSelect: function(event) {
-            var $t = $(this),$u= $('#' + $t.data('update'))
-				url = $t.data('url');
-            $u.empty();
-            $.get(url, {'id':$t.val()}, function(d){
-				for(i in d){
-					var a = $('<option />').text(d[i]).val(i);
-					$u.append(a);
-				}
-			}, 'json');
+            var $t = $(this),$u= $('#' + $t.data('update'));
+			$u.load($t.data('url') + $t.val())
 		},
 
 		/**
