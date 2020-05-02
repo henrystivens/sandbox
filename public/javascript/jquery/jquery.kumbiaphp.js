@@ -108,8 +108,21 @@
 		 * @param Object event
 		 */
 		cUpdaterSelect: function(event) {
-            var $t = $(this),$u= $('#' + $t.data('update'));
-			$u.load($t.data('url') + $t.val())
+			var $t = $(this);
+			var $u= $('#' + $t.data('update'));
+			var url = $t.data('url');
+            $u.empty();
+            $.get(url + $t.val(), {}, function(data){
+				for(var item in data) {
+
+					var name = typeof data[item] === 'object' ? data[item].name : data[item];
+					var value = typeof data[item] === 'object' ? data[item].id : item;
+					var a = $('<option />').text(name).val(value);
+					
+					$u.append(a);
+					$u.removeAttr('disabled')
+				}
+			}, 'json');
 		},
 
 		/**
