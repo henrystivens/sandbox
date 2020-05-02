@@ -4,8 +4,8 @@
             <label for="user_countries_id">Country</label>
             <?= Form::select(
                 'user.countries_id', //Field name, using 'user' of example
-                Countries::all(), //Data
-                'class="js-remote" data-url="getRegions/" data-update="div_regions"', //
+                $data, //Data
+                'class="js-remote" data-url="get/regions/" data-update="user_regions_id"', //
                 null, //For now it has no default value
                 '- Select -', //Shows a empty vale
                 'id',  //Value of the option
@@ -15,18 +15,22 @@
     </div>
     <div class="row">
         <div class="six columns">
-            <label for="user_region_id">Region</label>
-            <div id='div_regions'>
-                <select disabled></select>
-            </div>
+            <label for="user_regions_id">Region</label>
+            <?= Form::select(
+                'user.regions_id',
+                [],
+                'disabled class="js-remote" data-url="get/cities/" data-update="user_cities_id"',
+            ); ?>
         </div>
     </div>
     <div class="row">
         <div class="six columns">
-            <label for="user_city_id">City</label>
-            <div id='div_cities'>
-                <select disabled></select>
-            </div>
+            <label for="user_cities_id">City</label>
+            <?= Form::select(
+                'user.cities_id',
+                [],
+                'disabled'
+            ); ?>
         </div>
     </div>
 </section>
