@@ -3,29 +3,23 @@
 class KumbiaJsController extends AppController
 {
 
-    public function before_filter()
-    {
-        //It can also be located in initialize() of the parent controller 
-        if (Input::isAjax()) {
-            View::template(null);
-        }
-    }
-
     public function index()
     {
     }
 
     public function dependent_select()
     {
+        $this->data = Countries::all();
     }
 
-    public function getRegions($id)
+    public function get($model, $id)
     {
-        $this->countryId = $id;
-    }
-
-    public function getCities($id)
-    {
-        $this->regionId = $id;
+        if (!in_array($model, ['regions', 'cities'])) {
+            throw new KumbiaException('');
+        }
+     
+        View::select(null, 'json');
+        $model = ucfirst($model);
+        $this->data = $model::formSelect((int) $id);
     }
 }
