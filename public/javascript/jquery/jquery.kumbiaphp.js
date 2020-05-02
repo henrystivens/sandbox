@@ -111,8 +111,8 @@
 			var $t = $(this);
 			var $u= $('#' + $t.data('update'));
 			var url = $t.data('url');
-            $u.empty();
-            $.get(url + $t.val(), {}, function(data){
+			$u.empty();
+			$.get(url + $t.val(), {}, function(data){
 				for(var item in data) {
 
 					var name = typeof data[item] === 'object' ? data[item].name : data[item];
