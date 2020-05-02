@@ -2,10 +2,21 @@
 
 class Regions extends \Kumbia\ActiveRecord\LiteRecord
 {
-    public static function allByCountry($countryId)
+    /**
+     * List all regions by country ID
+     *
+     * @param  int $countryId Country ID
+     * 
+     * @return array
+     */
+    public static function formSelect(int $countryId): array
     {
-        $sql = 'SELECT id, name FROM regions WHERE country_id = :country_id';
+        if ($countryId <= 0) {
+            return [];
+        }
 
-        return self::all($sql, ['country_id' => $countryId]);
+        $sql = 'SELECT id, name FROM regions WHERE countries_id = :countries_id';
+
+        return self::all($sql, ['countries_id' => $countryId]);
     }
 }

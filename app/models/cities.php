@@ -2,10 +2,21 @@
 
 class Cities extends \Kumbia\ActiveRecord\LiteRecord
 {
-    public static function allByRegion($regionId)
+    /**
+     * List all cities by region ID
+     *
+     * @param  int $regionId Region ID
+     * 
+     * @return array
+     */
+    public static function formSelect(int $regionId): array
     {
-        $sql = 'SELECT id, name FROM cities WHERE region_id = :region_id';
+        if ($regionId <= 0) {
+            return [];
+        }
 
-        return self::all($sql, ['region_id' => $regionId]);
+        $sql = 'SELECT id, name FROM cities WHERE regions_id = :regions_id';
+
+        return self::all($sql, ['regions_id' => $regionId]);
     }
 }
