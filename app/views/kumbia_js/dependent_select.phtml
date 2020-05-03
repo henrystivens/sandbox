@@ -5,7 +5,7 @@
             <?= Form::select(
                 'user.countries_id', //Field name, using 'user' of example
                 $data, //Data
-                'class="js-remote" data-url="get/regions/" data-update="user_regions_id"', //
+                'class="js-remote" data-url="/kumbia_js/get/regions/" data-update="user_regions_id"', //
                 null, //For now it has no default value
                 '- Select -', //Shows a empty vale
                 'id',  //Value of the option
@@ -19,7 +19,7 @@
             <?= Form::select(
                 'user.regions_id',
                 [],
-                'disabled class="js-remote" data-url="get/cities/" data-update="user_cities_id"',
+                'disabled class="js-remote" data-url="kumbia_js/get/cities/" data-update="user_cities_id"',
             ); ?>
         </div>
     </div>
