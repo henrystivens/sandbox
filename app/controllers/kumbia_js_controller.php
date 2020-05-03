@@ -9,6 +9,7 @@ class KumbiaJsController extends AppController
 
     public function dependent_select()
     {
+        View::template(null);
         $this->data = Countries::all();
     }
 
