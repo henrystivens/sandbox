@@ -120,8 +120,9 @@
 					var a = $('<option />').text(name).val(value);
 					
 					$u.append(a);
-					$u.removeAttr('disabled')
 				}
+				$u.removeAttr('disabled');
+				$u.trigger('change');
 			}, 'json');
 		},
 
